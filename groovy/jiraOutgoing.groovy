@@ -14,14 +14,6 @@ replica.attachments    = issue.attachments
 replica.project        = issue.project
 
 
-
-// add logic for story points converted to labels here here
-
-
-
-
-
-
 //Comment these lines out if you are interested in sending the full list of versions and components of the source project. 
 replica.project.versions = []
 replica.project.components = []

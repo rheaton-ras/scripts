@@ -8,18 +8,7 @@ issue.description  = replica.description
 issue.comments     = commentHelper.mergeComments(issue, replica)
 issue.attachments  = attachmentHelper.mergeAttachments(issue, replica)
 
-
-if(replica.labels == "")
-
-
 issue.labels       = replica.labels
-
-
-
-
-
-
-
 
 /*
 User Synchronization (Assignee/Reporter)
