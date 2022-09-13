@@ -15,8 +15,8 @@ replica.project        = issue.project
 
 
 //Comment these lines out if you are interested in sending the full list of versions and components of the source project. 
-replica.project.versions = []
-replica.project.components = []
+//replica.project.versions = []
+//replica.project.components = []
 
 /*
 Custom Fields

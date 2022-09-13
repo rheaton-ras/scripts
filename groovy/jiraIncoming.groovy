@@ -9,34 +9,32 @@ issue.attachments  = attachmentHelper.mergeAttachments(issue, replica)
 
 replica.labels.each{value -> 
   if(value[0..-2] == "effort-"){
-      def points
-
       switch (value[7..-1])
       {
           case "1":
-              storyPoints = 1
+              issue.storyPoints = 1
               break
           case "2":
-              storyPoints = 2
+              issue.storyPoints = 2
               break
           case "3":
-              storyPoints = 3
+              issue.storyPoints = 3
               break
           case "4":
           case "5":
-              storyPoints = 5
+              issue.storyPoints = 5
               break
           case "6":
           case "7":
           case "8":
-              storyPoints = 8
+              issue.storyPoints = 8
               break
           case "9":
           case "10":
           case "11":
           case "12":
           case "13":
-              storyPoints = 13
+              issue.storyPoints = 13
               break
       }
   } else if(value == "bug"){
