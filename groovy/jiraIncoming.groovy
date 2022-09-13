@@ -8,12 +8,16 @@ issue.description  = replica.description
 issue.attachments  = attachmentHelper.mergeAttachments(issue, replica)
 
 if(replica?.key){
-   issue.labels.push("github-key-$replica.key")
+   def labelValue = "github-key-".plus(replica.key)
+   issue.labels += nodeHelper.getLabel(labelValue)
 }
 
-replica.labels.each{value -> 
-  if(value[0..-2] == "effort-"){
-      switch (value[7..-1])
+replica.labels
+.collect{ it.label = it.label.replace(" ", "_"); it }
+.each{value -> 
+   def stringValue = value.label[0..-2]
+   if(stringValue == "effort-"){
+      switch (value.label[7..-1])
       {
           case "1":
               issue.storyPoints = 1
@@ -41,11 +45,11 @@ replica.labels.each{value ->
               issue.storyPoints = 13
               break
       }
-  } else if(value == "bug"){
+   } else if(value.label == "bug"){
       issue.typeName = "Bug"
-  } else {
-      issue.labels.push(value)
-  }
+   } else {
+      issue.labels += nodeHelper.getLabel(value.label)
+   }
 }
 
 /*

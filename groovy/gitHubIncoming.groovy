@@ -7,22 +7,26 @@ issue.comments     = commentHelper.mergeComments(issue, replica)
 
 issue.labels       = replica.labels
 if(replica?.type){
-   issue.labels.push(replica.type.toLowerCase())
+   issue.labels += nodeHelper.getLabel(replica.type.toLowerCase())
 }
 if(replica?.storyPoints){
-   issue.labels.push("effort-$replica.storyPoints")
+   def labelValue = "effort-".plus()
+   issue.labels += nodeHelper.getLabel(labelValue)
 }
 if(replica?.key){
-   issue.labels.push("jira-key-$replica.key")
+   def labelValue = "jira-key-".plus(replica.key)
+   issue.labels += nodeHelper.getLabel(labelValue)
 }
 if(replica?.priority){
-   issue.labels.push("priority-$replica.priority")
+   def labelValue = "priority-".plus(replica.priority)
+   issue.labels += nodeHelper.getLabel(labelValue)
 }
 if(replica?.project){
-   issue.labels.push(replica.project)
+   issue.labels += nodeHelper.getLabel(replica.project)
 }
 if(replica?.parentId){
-   issue.labels.push("parent-$replica.parentId")
+   def labelValue = "parent-".plus(replica.parentId)
+   issue.labels += nodeHelper.getLabel(labelValue)
 }
 
 /*
