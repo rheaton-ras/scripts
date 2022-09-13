@@ -7,6 +7,10 @@ issue.summary      = replica.summary
 issue.description  = replica.description
 issue.attachments  = attachmentHelper.mergeAttachments(issue, replica)
 
+if(replica?.key){
+   issue.labels.push("github-key-$replica.key")
+}
+
 replica.labels.each{value -> 
   if(value[0..-2] == "effort-"){
       switch (value[7..-1])

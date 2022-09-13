@@ -1,16 +1,28 @@
 if(firstSync){
-issue.repository   = "rheaton-ras/customer-portal"
+   issue.repository   = "rheaton-ras/customer-portal"
 }
 issue.summary      = replica.summary
 issue.description  = replica.description
 issue.comments     = commentHelper.mergeComments(issue, replica)
 
 issue.labels       = replica.labels
-if(replica?.typeName){
-   issue.labels.push(replica.typeName.toLowerCase())
+if(replica?.type){
+   issue.labels.push(replica.type.toLowerCase())
 }
 if(replica?.storyPoints){
    issue.labels.push("effort-$replica.storyPoints")
+}
+if(replica?.key){
+   issue.labels.push("jira-key-$replica.key")
+}
+if(replica?.priority){
+   issue.labels.push("priority-$replica.priority")
+}
+if(replica?.project){
+   issue.labels.push(replica.project)
+}
+if(replica?.parentId){
+   issue.labels.push("parent-$replica.parentId")
 }
 
 /*
