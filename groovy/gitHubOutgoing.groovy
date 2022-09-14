@@ -1,6 +1,5 @@
 replica.key            = issue.key
 replica.assignee       = issue.assignee 
-// Support for multiple assignees to a single issue 
 replica.assignees      = issue.assignees 
 replica.reporter       = issue.reporter
 replica.summary        = issue.summary
