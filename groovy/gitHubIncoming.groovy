@@ -26,9 +26,9 @@ if(replica?.key){
 //    issue.labels += nodeHelper.getLabel(labelValue)
 // }
 
-if(replica?.project){
-   issue.labels += nodeHelper.getLabel(replica.project)
-}
+// if(replica?.project){
+//    issue.labels += nodeHelper.getLabel(replica.project)
+// }
 
 if(replica?.parentId){
    def labelValue = "parent-".plus(replica.parentId)
