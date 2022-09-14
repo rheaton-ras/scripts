@@ -40,5 +40,9 @@ def statusMap = ["To Do" : "open" , "Done" : "closed"]
 def remoteStatusName = replica.status.name
 issue.setStatus(statusMap[remoteStatusName] ?: remoteStatusName)
 
-issue.assignee     = nodeHelper.getUserByUsername(replica.assignee?.username)
-issue.reporter     = nodeHelper.getUserByUsername(replica.reporter?.username)
+def userMap = ["rheaton@coresupply.com": "rheaton-ras","garybarker@coresupply.com": "gbarkersurge","cfranke@coresupply.com": "RASCFranke"]
+def assignee = replica.assignee.username
+def reporter = replica.reporter.username
+def defaultUser = nodeHelper.getUserByUsername("rheaton-ras")
+issue.reporter = nodeHelper.getUserByUsername(userMap[reporter]) ?: defaultUser
+issue.assignee = nodeHelper.getUserByUsername(userMap[assignee]) ?: defaultUser

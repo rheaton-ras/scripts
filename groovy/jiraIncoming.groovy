@@ -51,11 +51,12 @@ replica.labels
    }
 }
 
-// TODO
-// this needs a user mapping
+def userMap = ["rheaton-ras": "rheaton@coresupply.com", "gbarkersurge": "garybarker@coresupply.com", "RASCFranke": "cfranke@coresupply.com"]
+def assignee = replica.assignee.username
+def reporter = replica.reporter.username
 def defaultUser = nodeHelper.getUserByEmail("rheaton@coresupply.com")
-issue.reporter = nodeHelper.getUserByEmail(replica.reporter?.email) ?: defaultUser
-issue.assignee = nodeHelper.getUserByEmail(replica.assignee?.email) ?: defaultUser
+issue.reporter = nodeHelper.getUserByEmail(userMap[reporter]) ?: defaultUser
+issue.assignee = nodeHelper.getUserByEmail(userMap[assignee]) ?: defaultUser
 
 issue.comments = commentHelper.mergeComments(issue, replica){ it.executor = nodeHelper.getUserByEmail(it.author?.email) }
 
